@@ -36,3 +36,11 @@ fun Context.snack(view:View, message:String) {
 fun Context.snack(view:View, @StringRes message:Int) {
     Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }
+
+fun View.toggleVisibility() {
+    if (visibility == View.INVISIBLE) {
+        toVisible()
+    } else {
+        toInvisible()
+    }
+}
