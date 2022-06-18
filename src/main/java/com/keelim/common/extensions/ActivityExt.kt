@@ -1,3 +1,11 @@
+package com.keelim.common.extensions
+
+import android.app.Activity
+import android.graphics.Color
+import android.view.View
+import android.view.WindowManager
+
+
 fun Activity.transparentStatusBar() {
     window.apply {
         clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

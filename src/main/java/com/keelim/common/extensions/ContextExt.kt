@@ -4,6 +4,10 @@ import android.content.Context
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import android.app.Activity
+import android.content.Intent
+import androidx.annotation.Px
+import androidx.core.os.bundleOf
 
 inline fun <reified T : Activity> Context.buildIntent(
     vararg argument: Pair<String, Any?>
