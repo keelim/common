@@ -17,18 +17,18 @@ fun View.toInvisible(){
     visibility = View.INVISIBLE
 }
 
-fun Context.snack(view:View, message:String) {
-    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
-}
-
-fun Context.snack(view:View, @StringRes message:Int) {
-    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
-}
-
 fun View.toggleVisibility() {
     if (visibility == View.INVISIBLE) {
         toVisible()
     } else {
         toInvisible()
     }
+}
+
+fun Context.snack(view:View, message:String) {
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+}
+
+fun Context.snack(view:View, @StringRes message:Int) {
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }
