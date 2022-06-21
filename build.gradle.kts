@@ -20,5 +20,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.material.themAdapter)
+
+    implementation(libs.coil.kt)
 }
 

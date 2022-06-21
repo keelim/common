@@ -1,14 +1,11 @@
 package com.keelim.common.extensions
 
-import android.content.Context
-import android.view.View
-import androidx.annotation.StringRes
-import com.google.android.material.snackbar.Snackbar
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat.JPEG
 import android.graphics.Color
+import android.graphics.Color.alpha
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.drawable.BitmapDrawable
@@ -25,6 +22,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.Px
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.animation.doOnEnd
 import androidx.core.content.res.use
@@ -44,7 +42,8 @@ import coil.imageLoader
 import coil.load
 import coil.request.ImageRequest
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.keelim.core.R
+import com.google.android.material.snackbar.Snackbar
+import com.keelim.common.R
 import java.io.File
 import java.io.FileOutputStream
 
@@ -187,50 +186,50 @@ fun Bitmap.toCacheFile(
  * An extension function which creates/retrieves a [SpringAnimation] and stores it in the [View]s
  * tag.
  */
-fun View.spring(
-    property: DynamicAnimation.ViewProperty,
-    stiffness: Float = 200f,
-    damping: Float = 0.3f,
-    startVelocity: Float? = null
-): SpringAnimation {
-    val key = getKey(property)
-    var springAnim = getTag(key) as? SpringAnimation?
-    if (springAnim == null) {
-        springAnim = SpringAnimation(this, property).apply {
-            spring = SpringForce().apply {
-                this.dampingRatio = damping
-                this.stiffness = stiffness
-                startVelocity?.let { setStartVelocity(it) }
-            }
-        }
-        setTag(key, springAnim)
-    }
-    return springAnim
-}
+//fun View.spring(
+//    property: DynamicAnimation.ViewProperty,
+//    stiffness: Float = 200f,
+//    damping: Float = 0.3f,
+//    startVelocity: Float? = null
+//): SpringAnimation {
+//    val key = getKey(property)
+//    var springAnim = getTag(key) as? SpringAnimation?
+//    if (springAnim == null) {
+//        springAnim = SpringAnimation(this, property).apply {
+//            spring = SpringForce().apply {
+//                this.dampingRatio = damping
+//                this.stiffness = stiffness
+//                startVelocity?.let { setStartVelocity(it) }
+//            }
+//        }
+//        setTag(key, springAnim)
+//    }
+//    return springAnim
+//}
 
 /**
  * Map from a [ViewProperty] to an `id` suitable to use as a [View] tag.
  */
-@IdRes
-private fun getKey(property: DynamicAnimation.ViewProperty): Int {
-    return when (property) {
-        SpringAnimation.TRANSLATION_X -> R.id.translation_x
-        SpringAnimation.TRANSLATION_Y -> R.id.translation_y
-        SpringAnimation.TRANSLATION_Z -> R.id.translation_z
-        SpringAnimation.SCALE_X -> R.id.scale_x
-        SpringAnimation.SCALE_Y -> R.id.scale_y
-        SpringAnimation.ROTATION -> R.id.rotation
-        SpringAnimation.ROTATION_X -> R.id.rotation_x
-        SpringAnimation.ROTATION_Y -> R.id.rotation_y
-        SpringAnimation.X -> R.id.x
-        SpringAnimation.Y -> R.id.y
-        SpringAnimation.Z -> R.id.z
-        SpringAnimation.ALPHA -> R.id.alpha
-        SpringAnimation.SCROLL_X -> R.id.scroll_x
-        SpringAnimation.SCROLL_Y -> R.id.scroll_y
-        else -> throw IllegalAccessException("Unknown ViewProperty: $property")
-    }
-}
+//@IdRes
+//private fun getKey(property: DynamicAnimation.ViewProperty): Int {
+//    return when (property) {
+//        SpringAnimation.TRANSLATION_X -> R.id.translation_x
+//        SpringAnimation.TRANSLATION_Y -> R.id.translation_y
+//        SpringAnimation.TRANSLATION_Z -> R.id.translation_z
+//        SpringAnimation.SCALE_X -> R.id.scale_x
+//        SpringAnimation.SCALE_Y -> R.id.scale_y
+//        SpringAnimation.ROTATION -> R.id.rotation
+//        SpringAnimation.ROTATION_X -> R.id.rotation_x
+//        SpringAnimation.ROTATION_Y -> R.id.rotation_y
+//        SpringAnimation.X -> R.id.x
+//        SpringAnimation.Y -> R.id.y
+//        SpringAnimation.Z -> R.id.z
+//        SpringAnimation.ALPHA -> R.id.alpha
+//        SpringAnimation.SCROLL_X -> R.id.scroll_x
+//        SpringAnimation.SCROLL_Y -> R.id.scroll_y
+//        else -> throw IllegalAccessException("Unknown ViewProperty: $property")
+//    }
+//}
 
 /**
  * Retrieve a color from the current [android.content.res.Resources.Theme].
