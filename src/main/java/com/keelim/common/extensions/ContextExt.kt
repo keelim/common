@@ -1,27 +1,27 @@
 package com.keelim.common.extensions
 
-import android.content.Context
-import android.widget.Toast
-import androidx.annotation.StringRes
-import androidx.fragment.app.Fragment
 import android.app.Activity
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.Px
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 
 inline fun <reified T : Activity> Context.buildIntent(
-    vararg argument: Pair<String, Any?>
+    vararg argument: Pair<String, Any?>,
 ): Intent = Intent(this, T::class.java).apply {
     putExtras(bundleOf(*argument))
 }
 
 inline fun <reified T : Activity> Context.startActivity(
-    vararg argument: Pair<String, Any?>
+    vararg argument: Pair<String, Any?>,
 ) {
     startActivity(buildIntent<T>(*argument))
 }
@@ -30,15 +30,15 @@ fun Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, duration).show()
 }
 
-fun Context.toast(@StringRes message:Int, duration:Int = Toast.LENGTH_SHORT){
+fun Context.toast(@StringRes message: Int, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, duration).show()
 }
 
-fun Fragment.toast(message:String, duration:Int = Toast.LENGTH_SHORT){
+fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(requireContext(), message, duration).show()
 }
 
-fun Fragment.toast(@StringRes message:Int, duration:Int = Toast.LENGTH_SHORT){
+fun Fragment.toast(@StringRes message: Int, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(requireContext(), message, duration).show()
 }
 

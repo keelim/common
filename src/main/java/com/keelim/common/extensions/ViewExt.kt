@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat.JPEG
 import android.graphics.Color
-import android.graphics.Color.alpha
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.drawable.BitmapDrawable
@@ -35,27 +34,24 @@ import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
-import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import coil.imageLoader
 import coil.load
 import coil.request.ImageRequest
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.keelim.common.R
 import java.io.File
 import java.io.FileOutputStream
 
-fun View.toVisible(){
+fun View.toVisible() {
     visibility = View.VISIBLE
 }
 
-fun View.toGone(){
+fun View.toGone() {
     visibility = View.GONE
 }
 
-fun View.toInvisible(){
+fun View.toInvisible() {
     visibility = View.INVISIBLE
 }
 
@@ -67,14 +63,13 @@ fun View.toggleVisibility() {
     }
 }
 
-fun Context.snack(view:View, message:String) {
+fun Context.snack(view: View, message: String) {
     Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }
 
-fun Context.snack(view:View, @StringRes message:Int) {
+fun Context.snack(view: View, @StringRes message: Int) {
     Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }
-
 
 
 fun ImageView.loadAsync(url: String?, @DrawableRes placeholder: Int? = null) {
@@ -126,7 +121,7 @@ fun TextView.asyncText(text: CharSequence?) {
 fun View.animateVisible(
     isVisible: Boolean,
     startDelay: Long = 0,
-    duration: Long = 30
+    duration: Long = 30,
 ) {
     animate()
         .setStartDelay(startDelay)
@@ -138,7 +133,7 @@ fun View.animateVisible(
 fun View.animateInvisible(
     isInvisible: Boolean,
     startDelay: Long = 0,
-    duration: Long = 30
+    duration: Long = 30,
 ) {
     animate()
         .setStartDelay(startDelay)
@@ -150,7 +145,7 @@ fun View.animateInvisible(
 fun View.animateGone(
     isGone: Boolean,
     startDelay: Long = 0,
-    duration: Long = 300
+    duration: Long = 300,
 ) {
     animate()
         .setStartDelay(startDelay)
@@ -166,7 +161,7 @@ fun View.toCacheFile(folderName: String? = null, fileName: String): File {
 fun Bitmap.toCacheFile(
     context: Context,
     folderName: String? = null,
-    fileName: String
+    fileName: String,
 ): File {
     val cacheDir = if (folderName.isNullOrBlank()) {
         context.cacheDir
@@ -236,7 +231,7 @@ fun Bitmap.toCacheFile(
  */
 @ColorInt
 fun Context.themeColor(
-    @AttrRes themeAttrId: Int
+    @AttrRes themeAttrId: Int,
 ): Int {
     return obtainStyledAttributes(
         intArrayOf(themeAttrId)

@@ -30,7 +30,7 @@ fun Fragment.showAsBottomSheet(@IdRes id: Int, content: @Composable (() -> Unit)
 
 private fun addContentToView(
     viewGroup: ViewGroup,
-    content: @Composable (() -> Unit) -> Unit
+    content: @Composable (() -> Unit) -> Unit,
 ) {
     viewGroup.addView(
         ComposeView(viewGroup.context).apply {
@@ -45,7 +45,7 @@ private fun addContentToView(
 private fun BottomSheetWrapper(
     parent: ViewGroup,
     composeView: ComposeView,
-    content: @Composable (() -> Unit) -> Unit
+    content: @Composable (() -> Unit) -> Unit,
 ) {
     val TAG = parent::class.java.simpleName
     val coroutineScope = rememberCoroutineScope()
@@ -100,7 +100,7 @@ inline fun SetUp(noinline content: @Composable () -> Unit) {
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun ComponentActivity.activityComposeView(
-    noinline content: @Composable () -> Unit
+    noinline content: @Composable () -> Unit,
 ) {
     setContent {
         SetUp {
@@ -112,7 +112,7 @@ inline fun ComponentActivity.activityComposeView(
 @Suppress("NOTHING_TO_INLINE")
 inline fun Fragment.fragmentComposeView(
     parent: CompositionContext? = null,
-    noinline content: @Composable () -> Unit
+    noinline content: @Composable () -> Unit,
 ) = ComposeView(requireContext()).apply {
     setParentCompositionContext(parent)
     layoutParams = ViewGroup.LayoutParams(
