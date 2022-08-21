@@ -29,6 +29,8 @@ import androidx.core.content.res.use
 import androidx.core.graphics.applyCanvas
 import androidx.core.text.PrecomputedTextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.doOnAttach
+import androidx.core.view.doOnDetach
 import androidx.core.view.drawToBitmap
 import androidx.core.view.forEach
 import androidx.core.view.isGone
@@ -36,6 +38,8 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import coil.imageLoader
 import coil.load
 import coil.request.ImageRequest
@@ -405,3 +409,14 @@ val Int.dp: Int
 val Float.dp: Int
     get() = (this * Resources.getSystem().displayMetrics.density).roundToInt()
 
+interface ViewHolderLifecycleInitializer {
+    var lifecycleOwner: LifecycleOwner?
+    fun initialize(itemView: View) {
+        itemView.doOnAttach {
+            lifecycleOwner = itemView.findViewTreeLifecycleOwner()
+        }
+        itemView.doOnDetach {
+            lifecycleOwner = null
+        }
+    }
+}
