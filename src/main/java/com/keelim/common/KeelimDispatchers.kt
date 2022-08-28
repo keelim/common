@@ -9,5 +9,7 @@ annotation class Dispatcher(val dispatcher: KeelimDispatchers)
 enum class KeelimDispatchers {
     IO,
     DEFAULT,
-    MAIN
+    MAIN,
+    MAIN_IMMEDIATE,
+    UNCONFINED,
 }
