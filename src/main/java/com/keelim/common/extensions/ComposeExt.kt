@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import com.google.android.material.composethemeadapter.MdcTheme
 
-
 fun Activity.showAsBottomSheet(@IdRes id: Int, content: @Composable (() -> Unit) -> Unit) {
     val viewGroup = this.findViewById(id) as ViewGroup
     addContentToView(viewGroup, content)

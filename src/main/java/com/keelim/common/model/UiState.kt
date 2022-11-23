@@ -60,7 +60,6 @@ sealed class SealedUiState<out T> {
     }
 }
 
-
 fun <T> Flow<T>.asDataUiState(): Flow<DataUiState<T>> {
     return map { DataUiState.success(it) }
         .onStart { emit(DataUiState.loading()) }
