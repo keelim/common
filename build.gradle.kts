@@ -23,4 +23,7 @@ dependencies {
 
     implementation(libs.coil.kt)
 }
+android {
+    namespace = "com.keelim.common"
+}
 
