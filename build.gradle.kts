@@ -2,7 +2,6 @@ plugins {
     id("keelim.android.library")
     id("keelim.android.library.compose")
     kotlin("kapt")
-    id("keelim.spotless.lint")
 }
 
 dependencies {
